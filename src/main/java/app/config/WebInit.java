@@ -11,7 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
 @Configuration
-@EnableWebMvc
+
 public class WebInit implements WebApplicationInitializer {
 
     @Override
@@ -26,4 +26,3 @@ public class WebInit implements WebApplicationInitializer {
 
     }
 }
-

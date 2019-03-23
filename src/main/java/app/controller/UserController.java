@@ -17,6 +17,7 @@ public class UserController {
 
 
     @Qualifier(value = "userService")
+
     @GetMapping("/ListPage")
     public String ListPage(Model model){
         model.addAttribute("ListOfUsers", userService.AllUsers());

@@ -11,7 +11,7 @@ import javax.management.Query;
 import java.util.List;
 
 
-@Repository
+
 public class DaoImpl implements Dao {
 
     public SessionFactory sessionFactory;
@@ -20,11 +20,6 @@ public class DaoImpl implements Dao {
 
         this.sessionFactory = sessionFactory;
     }
-
-    /*  @Autowired
-    public HibernateConfig config;
-
-    public Session session;*/
 
     @Override
     @SuppressWarnings("unchecked")

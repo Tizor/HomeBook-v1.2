@@ -22,9 +22,10 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan(basePackages = "app")
 public class HibernateConfig {
+    LocalSessionFactoryBean factoryBean;
 
     @Bean
-    public DataSource getDataSource(){
+    public DataSource getDataSource() {
         DriverManagerDataSource DS = new DriverManagerDataSource();
         DS.setUrl("jdbc:mysql://localhost:3306/phone_book5");
         DS.setUsername("root");
@@ -35,10 +36,10 @@ public class HibernateConfig {
 
     @Bean
     public SessionFactory getSessionFactory() {
-        LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
+         factoryBean = new LocalSessionFactoryBean();
         factoryBean.setDataSource(getDataSource());
 
-        Properties props=new Properties();
+        Properties props = new Properties();
         props.setProperty(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
         factoryBean.setHibernateProperties(props);
         factoryBean.setAnnotatedClasses(User.class);
@@ -47,74 +48,23 @@ public class HibernateConfig {
         return sf;
     }
 
-    /*   @Bean
-    public LocalSessionFactoryBean getSessionFactory() {
-        LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
-        factoryBean.setDataSource(getDataSource());
 
-        Properties props=new Properties();
-        props.setProperty(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
-        factoryBean.setHibernateProperties(props);
-        factoryBean.setAnnotatedClasses(User.class);
-        return factoryBean;
-    }*/
+    @Bean
+    public Dao getDao() {
+        return new DaoImpl(getSessionFactory());}
 
-  /*  @Bean
+
+        @Bean
+        public UserService getUserService () {
+
+        return new UserServiceImpl(getDao());
+        }
+
+    @Bean
     public HibernateTransactionManager getTransactionManager() {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-        transactionManager.setSessionFactory(getSessionFactory().getObject());
-        return transactionManager;
-    }*/
+        transactionManager.setSessionFactory(getSessionFactory());
+        return transactionManager;}
 
-    @Bean
-public Dao getDao(){
-        return new DaoImpl(getSessionFactory());
     }
-
-    @Bean
-    public UserService getUserService(){
-        return new UserServiceImpl(getDao());
-    }
-
-}
-
-/*<bean id="bookDao" class="net.proselyte.bookmanager.dao.BookDaoImpl">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
-    </bean>
-
-    <bean id="bookService" class="net.proselyte.bookmanager.service.BookServiceImpl">
-        <property name="bookDao" ref="bookDao"/>
-    </bean>*/
-
-/*public class HibernateConfig {
-
-    private  static  SessionFactory  sessionFactory;
-    private static Session session;
-
-    private static LocalSessionFactoryBean localSessionFactoryBean;
-
-    @Bean
-    public LocalSessionFactoryBean getSession() throws HibernateException {
-
-        Properties prop = new Properties();
-
-        prop.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
-        prop.setProperty(Environment.URL,  "jdbc:mysql://localhost:3306/phone_book5");
-        prop.setProperty(Environment.USER, "root");
-        prop.setProperty(Environment.PASS, "root");
-        prop.setProperty(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
-
-        Configuration config = new Configuration();
-        config.setProperties(prop);
-        config.addAnnotatedClass(User.class);
-
-        if(localSessionFactoryBean == null) {
-            localSessionFactoryBean = config.buildSessionFactory();
-            localSessionFactoryBean = sessionFactory.openSession();
-            return  localSessionFactoryBean;
-        }
-        localSessionFactoryBean = sessionFactory.openSession();
-        return localSessionFactoryBean;
-    }*/
-
 
