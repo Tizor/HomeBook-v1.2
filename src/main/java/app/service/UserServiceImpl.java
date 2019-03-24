@@ -9,14 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 
-
+@Service
 public class UserServiceImpl implements UserService {
-
+@Autowired
     private Dao dao;
 
-    public UserServiceImpl(Dao dao) {
+    /*public UserServiceImpl(Dao dao) {
         this.dao = dao;
-    }
+    }*/
 
     @Override
     @Transactional

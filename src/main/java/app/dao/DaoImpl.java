@@ -11,21 +11,21 @@ import javax.management.Query;
 import java.util.List;
 
 
-
+@Repository
 public class DaoImpl implements Dao {
-
+@Autowired
     public SessionFactory sessionFactory;
 
-    public DaoImpl(SessionFactory sessionFactory) {
+ /*   public DaoImpl(SessionFactory sessionFactory) {
 
         this.sessionFactory = sessionFactory;
     }
-
+*/
     @Override
     @SuppressWarnings("unchecked")
     public List<User> AllUsers() {
-        Session session = sessionFactory.getCurrentSession();
-        List<User> UserList = session.createQuery("from contacts").getResultList();
+
+        List<User> UserList = sessionFactory.getCurrentSession().createQuery("from User").getResultList();
         return UserList;}
 
 
