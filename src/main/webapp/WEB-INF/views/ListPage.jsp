@@ -11,6 +11,8 @@
 <div align="center">
     <h1>Home book</h1>
 
+    <h1>Hibernate edition</h1>
+
     <h3><a href="CreateUser">New Contact</a></h3>
 
     <table border="1">

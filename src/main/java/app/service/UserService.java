@@ -5,13 +5,14 @@ import app.model.User;
 import java.util.List;
 
 public interface UserService {
-    public void AddUser(User user);
 
-    public void UpdateUser(User user);
+    public void addUser(User user);
 
-    public void DeleteUser (int UserId);
+    public void updateUser(User user);
 
-    public List<User> AllUsers();
+    public void deleteUser (int UserId);
 
-    public User GetId(int UserId);
+    public List<User> allUsers();
+
+    public User getId(int UserId);
 }

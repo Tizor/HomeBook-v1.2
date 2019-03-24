@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface Dao {
 
-    public void AddUser(User user);
+    public void addUser(User user);
 
-    public void UpdateUser(User user);
+    public void updateUser(User user);
 
-    public void DeleteUser (int UserId);
+    public void deleteUser (int UserId);
 
-    public List<User> AllUsers();
+    public List<User> allUsers();
 
-    public User GetId(int UserId);
+    public User getId(int UserId);
 }

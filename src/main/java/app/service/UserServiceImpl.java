@@ -11,40 +11,37 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
+
 @Autowired
     private Dao dao;
 
-    /*public UserServiceImpl(Dao dao) {
-        this.dao = dao;
-    }*/
-
     @Override
     @Transactional
-    public void AddUser(User user) {
-        this.dao.AddUser(user);
+    public void addUser(User user) {
+        this.dao.addUser(user);
     }
 
     @Override
     @Transactional
-    public void UpdateUser(User user) {
-        this.dao.UpdateUser(user);
+    public void updateUser(User user) {
+        this.dao.updateUser(user);
     }
 
     @Override
     @Transactional
-    public void DeleteUser(int UserId) {
-        this.dao.DeleteUser(UserId);
+    public void deleteUser(int UserId) {
+        this.dao.deleteUser(UserId);
     }
 
     @Override
     @Transactional
-    public List<User> AllUsers() {
-        return dao.AllUsers();
+    public List<User> allUsers() {
+        return dao.allUsers();
     }
 
     @Override
     @Transactional
-    public User GetId(int UserId) {
-        return this.dao.GetId(UserId);
+    public User getId(int UserId) {
+        return this.dao.getId(UserId);
     }
 }

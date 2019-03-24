@@ -1,13 +1,8 @@
 package app.config;
 
-import app.dao.Dao;
-import app.dao.DaoImpl;
+
 import app.model.User;
-import app.service.UserService;
-import app.service.UserServiceImpl;
-import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Environment;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScans;
